@@ -1,0 +1,10 @@
+def show_weather(data):
+    print("______________________________________________")
+    print(f" Weather in {data['name']}")
+    print("_______________________________________________")
+    print(f"Temperature: {data['main']['temp']}°C")
+    print(f"Feels like: {data['main']['feels_like']}°C")
+    print(f"Humidity: {data['main']['humidity']}%")
+    print(f"Wind speed: {data['wind']['speed']} m/s")
+    print(f"Description: {data['weather'][0]['description']}")
+    print("_______________________________________________")
