@@ -10,7 +10,13 @@ def get_weather(city):
     
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     response = requests.get(url) # sends HTTP requests
-    if response.status_code == 200: # success
-        return response.json() # convert response to json
+    if response.status_code == 200:
+        return response.json() # returns JSON data
+    elif response.status_code == 404:
+        raise ValueError("City not found. Please check the city name and try again.")
+    elif response.status_code == 401:
+        raise ValueError("Invalid API key. Please check your API key and try again.")
     else:
-        raise Exception(f"Error fetching weather data: {response.status_code}")
+        raise RuntimeError(f"Something went wrong: {response.status_code}")
+        
+    
